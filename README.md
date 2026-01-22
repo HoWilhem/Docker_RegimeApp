@@ -239,6 +239,7 @@ Vous devriez voir 3 services actifs : `db`, `backend`, `frontend`
 
 ```
 projet docker/
+├── regime-app.yaml               # fichier kubernetes 
 ├── docker-compose.yml          # Orchestration des services
 ├── README.md                   # Ce fichier
 │
@@ -334,7 +335,9 @@ L'application utilise un fichier de configuration Kubernetes \`regime-app.yaml\`
 - **PersistentVolumes** : Stockage persistant pour MySQL
   Pour déployer :
   \`\`\`bash
-
+# Connexion entre services (IMPORTANT)
+Dans le backend server.js, la connexion MySQL doit être :
+host: 'mysql' au lieu de host: 'db'
 # Appliquer la configuration
 
 kubectl apply -f regime-app.yaml
@@ -354,3 +357,4 @@ kubectl get svc
 ![k8s](img/img7.png)
 ![k8s](img/img8.png)
 ![k8s](img/img9.png)
+
